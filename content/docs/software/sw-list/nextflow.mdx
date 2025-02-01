@@ -20,9 +20,9 @@ module avail nextflow/ # as a module
 
 <Callout  type="info" title="Tip" icon="💡">
 ```bash
-</Callout>
 This page contains notes on how to use Nextflow within metaCentrum grid. However MetaCentrum modules may not contail full-blown list of Nextflow utilities. As a no. 1 choide we recommend to access [Nextflow via the Kubernetes service](https://docs.cerit.io/docs/nextflow.html).
 ```
+</Callout>
 
 ### Example: Nextflow as a batch job
 
@@ -30,7 +30,7 @@ Nexflow script with two processes for run as separate PBS jobs, with passing an 
 
 Filename for this example is **basic.nexflow**:
 
-```
+```bash
 #!/bin/bash /software/nextflow/21.04.3/nextflow
 params.in = "$baseDir/sample.fa"
 /*
