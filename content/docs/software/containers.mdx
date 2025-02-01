@@ -3,8 +3,9 @@ title: Containers
 ---
 ![pic](/img/meta/software/singularity-logo.png)
 
-!!! abstract "What are containers"
+<Callout type="info" title="What are containers">
     *Containerization* is a software deployment process that bundles an application's code with all the files and libraries it needs to run on any infrastructure. It makes the application less dependent on the OS and system-wide installed libraries. A particular application packed together with its libraries and other files is a *container*. An **image** is a file sitting somewhere on the disk. A **container** is a runtime instance of an image. 
+</Callout>
 
 [Singularity](https://docs.sylabs.io/guides/latest/user-guide) is an open-source program for containerization used in MetaCentrum.
 
@@ -16,8 +17,9 @@ Singularity images (= containers) are commonly suffixed by `.sif`.
 
 ## Direct Singularity usage (new feature)
 
-!!! tip "Singularity image can be added as PBS parameter"
+<Callout type="info" title="Singularity image can be added as PBS parameter">
     The Singularity image can now be specified directly upon job submission as a PBS parameter, and the container will be automatically launched when the job starts. This is a new feature (Aug 2024). Keep in mind that this new feature is still in testing mode, and probably some expansion and modifications (e.g. towards parallelized computing) will be still under way. 
+</Callout>
 
 Key features:
 
@@ -104,8 +106,9 @@ For example,
     ...
     Singularity> command_N
 
-!!! warning "Do not use frontends for extensive containers' usage"
+<Callout type="info" title="Do not use frontends for extensive containers' usage">
     Apart from light testing and learning, running containers right on frontends is equivalent to **computing on frontend**. This is strongly discouraged. **For an extensive work with containers, use interactive or batch job.**
+</Callout>
 
 ### Use container in an interactive job
 
@@ -113,8 +116,9 @@ First run interactive job *with scratch directory*:
 
     qsub -l select=1:scratch_local=10gb -l walltime=24:00:00
 
-!!! question "What is the scratch directory good for?"
+<Callout type="info" title="What is the scratch directory good for?">
     You may need to redirect some Singularity environment variables to store temporary files. To point them to `SCRATCHDIR` is one option. Alternatively you may redirect the Singularity variables to some folder in your home.
+</Callout>
 
 Run the container and open a shell within the container for interactive work:
 
@@ -130,8 +134,9 @@ As with any other software, it is possible to pass a batch script to a container
 
 Assume the batch script resides in `/storage/city_N/home/user123/script.sh`.
 
-!!! question "Is the batch script for the Singularity application any different from the script for "normal" application?"
+<Callout type="info" title="Is the batch script for the Singularity application any different from the script for normal application?">
     In general, no, though for a very simple script, this may be the case. Most often, you will at least need to redirect Singularity environment variables to `SCRATCHDIR`. The `--bind` and `bash -c` commands shown below may be hidden in the script, too.
+</Callout>
 
 **Variant A: put Singularity-specific option on command line**
 

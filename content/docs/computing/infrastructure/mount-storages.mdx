@@ -1,8 +1,9 @@
 ---
 title: Mount storages locally
 ---
-!!! warning "This is for Linux and macOS"
+<Callout type="info" title="This is for Linux and macOS">
     This page contains tutorial how to mount storages locally on Linux and macOS machines. There is no free client for MS-Windows, just comercial NFS Maestro.
+</Callout>
 
 **List of current storage servers**
  
@@ -10,8 +11,9 @@ title: Mount storages locally
 
 You will need to do several things to make NFSv4 accessible on your Linux desktop:
 
-!!! note "Administrator access is required"
+<Callout type="info" title="Administrator access is required">
     You must have root privileges on your local PC.
+</Callout>
 
 ### Create mount points
 
@@ -83,8 +85,9 @@ For storages you wish to mount locally, add the following lines to the `/etc/fst
     storage-plzen1.metacentrum.cz:/ /storage/plzen1           nfs4       sec=krb5i             0 0
     ...
 
-!!! note
+<Callout type="info">
     Due to hardware replacement the data are moved continuously from one storage to another. For backward compatibility the old names of storages (e.g. brno2) are kept as symbolic links. The target in `/etc/fstab` must be a real directory, not a symlink. By using `ls -l` you can find where the symbolic links lead to. 
+</Callout>
 
 Sample of `/etc/fstab`:
 

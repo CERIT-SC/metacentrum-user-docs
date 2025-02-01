@@ -5,8 +5,9 @@ The CESNET Storage Department provides various types of data services. It is ava
 
 Storage Department data policies will be described to a certain level at this page. For more detailed information, users should however navigate the [Storage Department documentation pages](https://docs.du.cesnet.cz).
 
-!!! warning "Data storage technology in the Data Storage Department has changed by May 2024"
+<Callout type="info" title="Data storage technology in the Data Storage Department has changed by May 2024">
     For a long time the data were stored on hierarchical storage machines ("HSM" for short) with a directory structure accessible from `/storage/du-cesnet`.<br/> Due to technological innovation of operated system were the HSM storages disconnected and decommissioned. User data have been transferred to [machines with Object storage technology](https://docs.du.cesnet.cz/en/object-storage-s3/s3-service).<br/> Object storage is successor of HSM with slightly different set of commands, i.e. it **does not** work in the same way.
+</Callout>
 
 ## Object storage
 S3 storage is available for all Metacentrum users. You can generate your credetials via [Gatekeeper service](https://access.du.cesnet.cz/#/). Where you will select your Metacentrum account and you should obtain your `access_key` and `secret_key`.
@@ -17,8 +18,9 @@ You can use the S3 storage as simple storage to store your data. You can use you
 
 ### Direct usage in the job file
 You can add s5cmd and rclone commands directly into your job file.
-!!! warning "Bucket creation"
+<Callout type="info" title="Bucket creation">
     Do not forget that the bucket being used for staging MUST exist on the remote S3 data storage. If you plan to stage-out your data into a non-existing bucket the job will fail. You need to prepare the bucket for stage-out in advance. You can use the [official Data Storage Department tutorials](https://docs.du.cesnet.cz/en/object-storage-s3/s3-clients) for particular S3 client.
+</Callout>
 
 #### s5cmd
 To use s5cmd tool (preferred) you need to create a credentials file (copy the content below) in your home dir, e.g. `/storage/brno2/home/<your-login-name>/.aws/credentials`.

@@ -80,8 +80,9 @@ It is also possible for the users to add additional kernels or bring their own n
 
 If you wish to stop or restart current notebook server, go to *Home* (or *Control Panel* if you already run an active notebook server), click on *Stop My Server* and *Start My Server*. 
 
-!!! note
+<Callout type="info">
     It is possible to spawn multiple Jupyter notebook servers per user. Click on *Home* (or *Control Panel* if you are in an active notebook server) and create a new named server. The first notebook server can have no name and it is considered a feature by the Jupyterhub developers. 
+</Callout>
 
 ![pic](/img/meta/related/jupyter/jupyterhub-named-servers.png)
 
@@ -304,8 +305,9 @@ int main()
 
 ## Setting Python virtual environment using `virtualenv`
 
-!!! note
+<Callout type="info">
     If you don't need to manage and switch between multiple python environments, but you only want to install additional python libraries and make them available in your Jupyter notebook, you dont have to use virtualenv and you should follow the next section with manual installation of python packages. 
+</Callout>
 
 It is often useful to have one or more Python environments where you can experiment with different combinations of packages without affecting your main installation. Python supports this through virtual environments.
 
@@ -628,8 +630,9 @@ This part is for advanced users who want to better understand Jupyter backend an
 
 The generic job script is run with the following series of commands:
 
-!!! note
+<Callout type="info">
     For security reasons `JUPYTERHUB_API_TOKEN` cannot be sent as a variable because anybody could read the content and potentially replace the notebook server with their own, it has to be sent in a file called `JUPYTERHUB_API_TOKEN_FILE` through `scp` to user's home directory at `storage-brno3.metacentrum.cz:/gpfs/home/{username}` before we call the qsub itself) 
+</Callout>
 
 ```
 export JUPYTERHUB_API_TOKEN_FILE=.jupyterhub_api_token_$(date +%s | md5sum | head -c 32) && \

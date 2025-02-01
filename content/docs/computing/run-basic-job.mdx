@@ -9,9 +9,10 @@ Welcome to the basic guide on how to run calculations in the Metacentrum grid se
 - set up **resources** for a job,
 - retrieve job **output**.
 
-!!! note "To start, you need to"
 
+<Callout type="info" title="To start, you need to">
     1. have a Metacentrum account
+</Callout>
     2. be able to login to a frontend node
     3. have elementary knowledge of the Linux command line
  
@@ -126,8 +127,9 @@ Alternatively, you can specify resources on the command line. In this case, the 
     (BUSTER)user123@skirit:~$qsub -l select=1:ncpus=4:mem=4gb:scratch_local=10gb -l walltime=1:00:00 myJob.sh 
 ```
 
-!!! note
+<Callout type="info">
     If both resource specifications are present (on CLI as well as inside the script), the values on CLI have priority.
+</Callout>
 
 ## Interactive job example
 
@@ -267,8 +269,9 @@ You can see the signal as `Exit_status` on CLI:
 
 When the job is finished (no matter how), it exits with a certain **exit status** (a number).
 
-!!! note "Exit status is meaningful only for batch jobs"
+<Callout type="info" title="Exit status is meaningful only for batch jobs">
     Interactive jobs have always exit status equal to 0.
+</Callout>
 
 A normal termination is denominated by 0.
 
@@ -281,8 +284,9 @@ You can get the exit status by typing
     Exit_status = 271
 ```
 
-!!! warning "For older jobs, use pbs-get-job-history"
+<Callout type="info" title="For older jobs, use pbs-get-job-history">
     The `qstat -x -f` works only for recently finished jobs (last 24 hours). For For older jobs, use the `pbs-get-job-history` utility - see [advanced chapter on getting info about older jobs](../computing/jobs/finished-jobs#older).
+</Callout>
 
 Alternatively, you can navigate to [your list of jobs in PBSmon](https://metavo.metacentrum.cz/pbsmon2/jobs/detail), go to tab "Jobs" and choose a particular finished job from the list.
 
@@ -337,8 +341,9 @@ Most often you will meet some of the following signals:
 
 In case of erroneous job ending, the data are left in the scratch directory. You should always clean the scratch after all potentially useful data has been retrieved. To do so, you need to know the hostname of machine where the job was run, and path to the scratch directory.
 
-!!! note
+<Callout type="info">
     Users' rights allow only `rm -rf $SCRATCHDIR/*`, not `rm -rf $SCRATCHDIR`.
+</Callout>
 
 For example:
 

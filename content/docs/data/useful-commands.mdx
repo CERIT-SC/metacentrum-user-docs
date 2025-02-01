@@ -24,8 +24,9 @@ Using `wget` you can only transfer data **to** Metacentrum machines.
 
 sftp is just another protocol for data transfer. Contrary to `scp` it is **interactive** and apart from copying it also enables the user to manipulate files and directories on the remote side. We recommend to use `scp` if you need only to copy the data.
 
-!!! warning "Windows users alert"
+<Callout type="info" title="Windows users alert">
     Windows users need an SFTP client, we recommend the WinSCP application. Keep in mind you have to fill in as target chosen NFS4 server instead of frontend in Step 1. Make sure you have selected SFTP file protocol, too.
+</Callout>
 
 1.    `sftp user123@target_NFS4_server` # Login
 2.    `help` List available commands
@@ -34,8 +35,9 @@ sftp is just another protocol for data transfer. Contrary to `scp` it is **inter
 5.    `put target_file` Upload target file to server
 6.    `put -r target_directory` Upload target directory to server
 
-!!! bug
+<Callout type="info">
     There is a bug affecting Ubuntu 14.04+ concerning the recursive copy command. If `put -r` fails, create the target directory on the server first to work around this issue.
+</Callout>
 
 ![SFTP screenshot bug](/img/meta/data/useful-commands-sftp-bug.png)
 

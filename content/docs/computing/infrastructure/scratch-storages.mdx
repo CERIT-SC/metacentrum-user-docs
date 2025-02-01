@@ -36,8 +36,9 @@ We offer four types of scratch storage:
         remember to choose mem large enough (to hold both data in scratch and the actual memory requirements for the job)
         mounted to directory /dev/shm/scratch.shm/USERNAME/job_JOBID
 
-!!! warning "No default scratch"
+<Callout type="info" title="No default scratch">
     For a batch job, you must set the size and type of scratchdir! There is no default type of scratch.
+</Callout>
 
 Directory `SCRATCHDIR` is not writable, only it's content is. Therefore you cannot e.g. do `rm -rf $SCRATCHDIR`, but you can `rm -rf $SCRATCHDIR/*`.
 

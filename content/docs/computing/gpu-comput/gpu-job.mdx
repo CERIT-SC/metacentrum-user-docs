@@ -3,8 +3,9 @@ title: GPU job
 ---
 To run GPU calculation, the user needs to specify **number of GPU cards** only. The PBS scheduler will route the job automatically into one of the **[gpu queues](https://metavo.metacentrum.cz/pbsmon2/queues/list)**.
 
-!!! tip "User group `iti` has a reserved GPU queue"
+<Callout type="info" title="User group `iti` has a reserved GPU queue">
     Members of the [`iti` group](https://metavo.metacentrum.cz/pbsmon2/group/pbs-m1.metacentrum.cz/iti) (Institute of Theoretical Informatics, University of West Bohemia) have their own GPU cluster `konos` with priority access through direct submit to `iti@pbs-m1.metacentrum.cz` queue.
+</Callout>
 
 ## PBS resources
 
@@ -38,16 +39,18 @@ Minimal version of a chosen architecture, e.g. 7 ("Volta"):
 
 The requirements can be combined in a comma-separated string.
 
-!!! note
+<Callout type="info">
     The commas are evaluated as an OR operand.
+</Callout>
 
 Example:
 
     qsub -l select=1:ngpus=1:gpu_cap=\"sm_65,compute_70\":mem=4gb -l walltime=1:00:00  # 6.5 or 7.0 and higher
     qsub -l 'select=1:ngpus=1:gpu_cap="sm_65,compute_70":mem=4gb' -l walltime=1:00:00  # dtto
 
-!!! note
+<Callout type="info">
     Note that the quotes enclosing the `gpu_cap` options must be protected against shell expansion either by escaping them or by enclosing the whole `qsub` command into single quotes.
+</Callout>
 
 ### cuda\_version
 

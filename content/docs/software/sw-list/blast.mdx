@@ -60,10 +60,11 @@ A new DB release contains very large GI numbers (GenInfo Identifier) which are i
 
 If you need to run **several BLAST jobs with the same database**, we ask user to optimize the network load by **copying the database only once and using it for all the jobs running on the same node**. 
 
-!!! note
+<Callout type="info">
 ```bash
 This requires that you don't clean the content of your scratch directory after the first job is finished!
 ```
+</Callout>
 
 This can be done by inserting following construction into the batch script: 
 

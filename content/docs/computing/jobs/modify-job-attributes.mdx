@@ -3,11 +3,13 @@ title: Modify job attributes
 ---
 Users can modify the attributes of the queueing jobs with the `qalter` command. The `qalter` command accomplishes the modifications by sending a modified job batch request to the PBS server, which owns each job. Thus, users must rewrite the entire attribute, including the unchanged parts. To see which attributes can be modified, call the `qalter` command on any frontend server.
 
-!!! note
+<Callout type="info">
     Only queuing jobs (in the Q state) can be modified using `qalter`. 
+</Callout>
 
-!!! note
+<Callout type="info">
     A more detailed description of each function can be found in the [official documentation](https://help.altair.com/2024.1.0/PBS%20Professional/PBSReferenceGuide2024.1.pdf#M5.9.31514.PBSHeading1.236.qalter).
+</Callout>
 
 The most frequently corrected attribute is the `-l` (resource list) attribute. Below are a few examples of how to use the `qalter` command and modify this attribute.
 
@@ -19,8 +21,9 @@ will never (will wait indefinitely in the queue) start because the requirement o
 
     $ qalter -l select=1:ncpus=32:mem=10gb:scratch_local=10gb job_ID.pbs-m1.metacentrum.cz
 
-!!! note
+<Callout type="info">
     Please note that the entire attribute needs to be written, including unchanged parts.
+</Callout>
 
 It is also possible to add some new values to the attribute. For example, the `spec` value that determines the speed of the CPU.
 
@@ -51,8 +54,9 @@ Attempts to increase the walltime behind the upper limit will fail.
     $ qalter -l walltime=10:00:00 job_ID.pbs-m1.metacentrum.cz
     qalter: Job violates queue and/or server resource limits job_ID.pbs-m1.metacentrum.cz
 
-!!! note
+<Callout type="info">
     The walltime of running jobs can be extended with [qextend utility](https://docs.metacentrum.cz/computing/jobs/extend-walltime/).
+</Callout>
 
 Additionally, it can be set that the job will start only if some (one or more) previous job (which can already be running or still queuing) is successfully completed (returns with an exit code of 0). It is called a Job Dependencies. The general usage includes `-W` attribute, followed by syntax `depend=afterok:job_ID` (the job in this argument list must be terminated without errors).
 

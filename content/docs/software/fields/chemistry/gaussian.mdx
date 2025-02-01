@@ -43,7 +43,7 @@ We highly recommend to use the `g09-prepare` utility to automatically set the in
 </Callout>
 For example, such a script may look like this one:
 
-````
+```
 #!/bin/bash
 
 #ensure removing the temporary data if the job ends or fails
@@ -80,7 +80,7 @@ g09 ${JOBNAME}.com
 
 # copy the output from local scratch to shared network disk
 cp ${JOBNAME}.log $DATADIR/ || export CLEAN_SCRATCH=false
-````
+```
 
 Pass the startup script to the scheduler together with resource requirements:
 
@@ -88,10 +88,11 @@ Pass the startup script to the scheduler together with resource requirements:
 qsub -l select=1:ncpus=X:mem=Yg:scratch_local=Zg mydescriptionscript.sh
     
 ```
-!!! note
+<Callout type="info">
 ```bash
 The Gaussian version purchased by MetaCentrum does not support a distributed run over a multiple nodes; thus, use just a single node with multiple processors for your computations...
 ```
+</Callout>
 
 
 ### Linda computations (using more machines)
