@@ -8,8 +8,9 @@ To manage proper cleaning of scratch space, users can take advantage of `trap` c
 
 `clean_scratch` is a systemwide-installed MetaCentrum utility that removes the content of the current job's scratch directory.
 
-!!! tip 
+<Callout  type="info" title="Tip" icon="💡">
     While it is perfectly OK to use the `trap` command instruction upon the normal ending of a job, in case the job is killed (either by PBS or user) the results may be not always what the user expected, depending on the amount of data in scratch. 
+</Callout>
 
 ## Trap the EXIT
 
@@ -50,8 +51,9 @@ This construction combines both purposes mentioned above.
 
 ## Caveats
 
-!!! tip
+<Callout  type="info" title="Tip" icon="💡">
     Currently the delay between `SIGTERM` and `SIGKILL` is **10 seconds**.<br/>Depending on the amount of data in scratch, some code constructions within the `trap` command may run to and end, while other may not. This can lead to unexpected behaviour.
+</Callout>
 
 **Example 1**
 

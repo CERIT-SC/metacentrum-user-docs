@@ -28,8 +28,9 @@ This option is recommended to advanced users or as a fallback option in case OnD
 
 ## Licences
 
-!!! warning
+<Callout  type="warn" title="Warning">
 ```bash
+</Callout>
 Any of the purchased licenses permit **just an academic use** of the program!
 ```
 
@@ -49,8 +50,9 @@ PBS tracks these licenses as a `"matlab"` resource, therefore unless you use old
 qsub ... -l matlab=1 ...   # ask for 1 Matlab license
 
 ```
-!!! tip
+<Callout  type="info" title="Tip" icon="💡">
 ```bash
+</Callout>
 In principle a license reservation is needed both for Matlab core and each one of the toolboxes you will need to use. **However, since the number of respective toolbox licenses is large, it is improbable that they will "run out"**. For most cases, you will be safe with the following simplified version which reserves only the core Matlab license `qsub ... -l matlab=1 ...` .
 ```
 
@@ -130,8 +132,9 @@ To find number of licenses:
 Unless they have a specific reason, **we urge users to use version 9.14 and newer**.
 ```
 
-!!! warning
+<Callout  type="warn" title="Warning">
 ```bash
+</Callout>
 PBS dorces not anymore track the licenses for older Matlab versions, therefore **when you submit the job, do not use the `-l matlab=XX` option**.
 ```
 

@@ -107,8 +107,9 @@ Example:
 
 ![Copy data to storage through frontend](/img/meta/data/cp-data-through-frontend.jpg)
 
-!!! warning
+<Callout  type="warn" title="Warning">
     As you can see from the picture, all the traffic has to be processed by a frontend (data are not stored on the frontend, but they load its CPUs and RAM), although the frontend is neither the source nor target of the data.
+</Callout>
 
 ## Large data handling
 
@@ -124,11 +125,13 @@ The overall scheme can be depicted as below:
 
 ![pic](/img/meta/data/cp-data-directly-storage.jpg)
 
-!!! warning 
+<Callout  type="warn" title="Warning">
     Do not use frontends to transfer large data. Processes consuming inadequate CPU and RAM frontend capacity will be stopped.
+</Callout>
 
-!!! tip
+<Callout  type="info" title="Tip" icon="💡">
     See **[table of storages](../computing/infrastructure/storages)** for storage server addresses and mount points.
+</Callout>
 
 !!! note 
     In general, the smaller number of files in the archive, the better (it speeds operations up and generates lower load on the storage subsystems; on the other hand, packing the files makes searching less comfortable). In case you need to archive a large number of small files, we recommend strongly to pack them before, as read/write operations are slower with many small files.

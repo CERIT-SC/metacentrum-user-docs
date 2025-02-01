@@ -9,8 +9,9 @@ This chapter will give you some insight into direct data manipulation on storage
 
 Selected commands for data manipulation directly at the storage server can be run through `ssh`.
 
-!!! tip
+<Callout  type="info" title="Tip" icon="💡">
     When copying files with `dd` set block size (bs parameter) to at least 1 M. Operations will be faster.
+</Callout>
 
 Apart from the **cerit storages** (those with "cerit" in the name of the server), there is **no shell** available on storage servers, so `ssh user123@storage_name.metacentrum.cz` will not work. Instead, use the construction like `ssh user123@storage_name.metacentrum.cz command`.
 

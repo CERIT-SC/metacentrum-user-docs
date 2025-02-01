@@ -9,8 +9,9 @@ MetaCentrum offers two ways of parallel computing - **OpenMP** and **MPI**, whic
 
 If your application is able to use multiple threads via a shared memory, **request a single chunk with multiple processors** and make sure the variable `OMP_NUM_THREADS` is set.
 
-!!! warning
+<Callout  type="warn" title="Warning">
     Setting the variable `OMP_NUM_THREADS` is important, as it restricts the number of processes that can run in parallel. **If `OMP_NUM_THREADS` is not set, the application may try to use all the available cores and batch system will kill your job.**
+</Callout>
 
 For example with qsub command:
 

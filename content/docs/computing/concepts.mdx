@@ -32,8 +32,9 @@ Frontends should be used only for:
 - managing batch jobs
 - light compiling and testing
 
-!!! warning
+<Callout  type="warn" title="Warning">
     The resource load on frontend is monitored continuously. Processes not adhering to usage rules will be terminated without warning. For large compilations, running benchmark calculations or moving massive data volumes (> 10 GB, > 10 000 files), use interative job.
+</Callout>
 
 ## PBS server
 
@@ -152,8 +153,9 @@ To store these files, as well as all the input data, on the computational node, 
 
 This is a purpose of **scratch directory** on computational node.
  
-!!! warning
+<Callout  type="warn" title="Warning">
     There is no default scratch directory and the user must always specify its type and volume.
+</Callout>
 
 Currently we offer four types of scratch storage:
 

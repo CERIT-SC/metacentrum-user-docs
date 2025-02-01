@@ -67,8 +67,9 @@ Singularity employs a few *paths* to store various temporary files:
 - `LOCALCACHEDIR`: - run shell exec
 - `TMPDIR`: - squashfs and temporary files, there is limit 1GB by default, if you need more use scratch
 
-!!! tip
+<Callout  type="info" title="Tip" icon="💡">
     If `SCRATCHDIR` exists, Singularity **automatically** exports their variables ` SINGULARITY_TMPDIR` and `SINGULARITY_CACHEDIR`. That is why in the rest of this section the explicit export of these variables is not done.
+</Callout>
 
 ### List options
 
@@ -386,8 +387,9 @@ Preparing your own Singularity image is intended for experienced users. Reading 
 
 To build custom image, root privileges are needed, but this can be replaced by User Namespace Remapping. For this purpose MetaCentrum offers a server `builder.metacentrum.cz` with User Namespace Remapping.
 
-!!! warning 
+<Callout  type="warn" title="Warning">
     Access to `builder.metacentrum.cz` is not granted automatically. Users intending to build Singularity images have to apply for membership in group `builders` by writing a request to meta@cesnet.cz.
+</Callout>
 
 Image file is read-only and to modify it you have to use sandbox directory. In this example we use Debian Buster docker image.
 

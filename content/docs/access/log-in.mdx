@@ -44,21 +44,24 @@ Are you sure you want to continue connecting (yes/no)?
 
 Type "yes". The public key of the frontend will be saved to your `~/.ssh/known_hosts` file.
 
-!!!tip 
+<Callout type="info" title="Tip" icon="💡">
     Strictly speaking the user should always verify a new key before adding it to a list of known hosts. For a howto on SSH key verification, see [more detailed page on SSH key verification]().
+</Callout>
 
 Once the terminal connection to a frontend is open you can start using it with the Linux command line tools (bash shell).
 
 A complete list of frontends is given below. You can use any of them. We encourage users to pick one that is closest to their physical location (city) to minimize network lag.
 
-!!! tip
+<Callout type="info" title="Tip" icon="💡">
     In case your favourite frontend is down or going just too slow, do not hesitate to use another one.   
+</Callout>
 
 <FrontendTable/>
 
-!!! warning
 
+<Callout type="warn" title="Warning">
     The frontend nodes can be used for light pre- and postprocessing and manipulation of data. All other tasks must be submitted as jobs to the batch job system. If you need to run something interactively, submit an interactive job.
+</Callout>
 
 ## Kerberos 
 
@@ -68,8 +71,9 @@ After the user enters MetaCentrum infrastructure by logging in, they will need a
 
 After the user logs in, they automatically obtain a **Kerberos tickets**. As long as the ticket is valid, user can move between machines, run jobs, copy files without bothering about the authentication.
 
-!!! warning
+<Callout type="warn" title="Warning">
     The ticket is valid for 10 hours. If you stay logged in for longer, you will need to re-generate your ticket with `kinit` command.
+</Callout>
 
 **Basic Kerberos commands**
 

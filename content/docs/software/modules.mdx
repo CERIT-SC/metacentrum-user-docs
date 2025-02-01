@@ -76,8 +76,9 @@ $ module rm  matlab/9.9      # dtto
     $ module purge   # get rid of everything!
     $ module purge && module add metabase/1 # see below
 
-!!! warning 
+<Callout  type="warn" title="Warning">
     The `module purge` command will remove also an automatically loaded module `metabase/1`. This module makes accessible utils in `/software/meta-utils/public`, like `qextend`, `clean_scratch`, `walltime_prolong_user_info`, `check-local-quota` and other commands. For this reason, we recommend to add module `metabase/1` after using `module purge` command. 
+</Callout>
 
 
 ### Display info
