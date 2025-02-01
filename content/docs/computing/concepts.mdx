@@ -1,19 +1,26 @@
 ---
 title: Basic terms
 ---
+
+import FrontendTable from '@/components/frontends';
+
 ## Frontends, storages, homes
 
 There are several **frontends** (login nodes) to access the grid. Each frontend has a native **home directory** on one of the **storages**. 
 
 There are several storages (large-capacity harddisc arrays). They are named according to their physical location (a city). 
 
-    user123@user123-XPS-13-9370:~$ ssh skirit.metacentrum.cz
-    user123@skirit.ics.muni.cz's password: 
-    ...
-    (BUSTER)user123@skirit:~$ pwd # print current directory
-    /storage/brno2/home/user123   # "brno2" is native storage for "skirit" frontend
+```bash
+user123@user123-XPS-13-9370:~$ ssh skirit.metacentrum.cz
+user123@skirit.ics.muni.cz's password: 
+...
+(BUSTER)user123@skirit:~$ pwd # print current directory
+/storage/brno2/home/user123   # "brno2" is native storage for "skirit" frontend
+```
 
 **List of frontends together with their native /home directories**
+
+<FrontendTable/>
 
 **Frontend do's and dont's**
 
@@ -75,7 +82,9 @@ There are a deal more resources than the ones shown here; for example, it is pos
 
 Examples:
 
+```bash
     qsub -l select=1:ncpus=2:mem=4gb:scratch_local=1gb -l walltime=2:00:00 myJob.sh
+```
 
 where
 
@@ -121,7 +130,7 @@ Key command to work with software is `module`, see `module --help` on any fronte
 
 **Basic commands**
 
-```
+```bash
 module avail orca/ # list versions of installed Orca
 
 module add orca # load Orca module (default version) 
@@ -157,11 +166,13 @@ Currently we offer four types of scratch storage:
 
 As a default choice, we recommend users to use **local scratch**:
 
-    qsub -I -l select=1=ncpus=2:mem=4gb:scratch_local=1gb -l walltime=2:00:00
+```bash
+qsub -I -l select=1=ncpus=2:mem=4gb:scratch_local=1gb -l walltime=2:00:00
+```
 
 To access the scratch directory, use the system variable `SCRATCHDIR`:
 
-```
+```bash
 (BULLSEYE)user123@skirit:~$ qsub -I -l select=1:ncpus=2:mem=4gb:scratch_local=1gb -l walltime=2:00:00
 qsub: waiting for job 14429322.pbs-m1.metacentrum.cz to start
 qsub: job 14429322.pbs-m1.metacentrum.cz ready

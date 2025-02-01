@@ -1,38 +1,46 @@
 ---
 title: Log in
 ---
+
+import FrontendTable from '@/components/frontends';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
 Users connect to MetaCentrum by using `ssh` to any of the login nodes called **frontends**.
 
 ![Grid overall scheme](/img/meta/access/grid-overall-scheme.jpg)
 
 In Linux, macOS, Windows PowerShell and MobaXterm the `ssh` command can be given in the terminal.
 
-=== "Linux, macOS, Windows PowerShell and MobaXterm terminal"
+<Tabs items={["Linux, macOS, Windows PowerShell and MobaXterm terminal", "Windows PuTTY"]}>
+<Tab value="Linux, macOS, Windows PowerShell and MobaXterm terminal">
+Open the terminal and on CLI type
 
-    Open the terminal and on CLI type
+```bash
+ssh your_username@frontend
+```
+</Tab>
+<Tab value="Windows PuTTY">
+1. Open PuTTY
+2. Specify frontend name as Host name
+3. Use default port 22
+4. Use SSH connection type, protocol version 2
+5. Click on "Open"
+6. A terminal should appear prompting for your MetaCentrum username and password.
+7. On the command line type
 
-    ```
-    ssh your_username@frontend
-    ```
+```bash
+ssh your_username@frontend
+```
+</Tab>
+</Tabs>
 
-=== "Windows PuTTY"
-
-    1. Open PuTTY
-    2. Specify frontend name as Host name
-    3. Use default port 22
-    4. Use SSH connection type, protocol version 2
-    5. Click on "Open"
-    6. A terminal should appear prompting for your MetaCentrum username and password.
-    7. On the command line type
-
-    ```
-    ssh your_username@frontend
-    ```
 If you log in for the first time, you will be prompted by a query similar to the following:
 
-    The authenticity of host 'skirit.ics.muni.cz (2001:718:ff01:1:216:3eff:fe20:382)' can't be
-    established. ECDSA key fingerprint is SHA256:Splg9bGTNCeVSLE0E4tB30pcLS80sWuv0ezHrH1p0xE.
-    Are you sure you want to continue connecting (yes/no)?
+```
+The authenticity of host 'skirit.ics.muni.cz (2001:718:ff01:1:216:3eff:fe20:382)' can't be
+established. ECDSA key fingerprint is SHA256:Splg9bGTNCeVSLE0E4tB30pcLS80sWuv0ezHrH1p0xE.
+Are you sure you want to continue connecting (yes/no)?
+```
 
 Type "yes". The public key of the frontend will be saved to your `~/.ssh/known_hosts` file.
 
@@ -45,6 +53,8 @@ A complete list of frontends is given below. You can use any of them. We encoura
 
 !!! tip
     In case your favourite frontend is down or going just too slow, do not hesitate to use another one.   
+
+<FrontendTable/>
 
 !!! warning
 
