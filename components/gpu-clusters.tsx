@@ -1,7 +1,8 @@
 import React from 'react';
 
 const GPUClusterTable = () => {
-  const data = [
+  // Data for the table
+  const tableData = [
     {
       cluster: 'adan.grid.cesnet.cz',
       nodes: 'adan[1-61].grid.cesnet.cz',
@@ -129,7 +130,7 @@ const GPUClusterTable = () => {
         </tr>
       </thead>
       <tbody>
-        {data.map((row, index) => (
+        {tableData.map((row, index) => (
           <tr key={index}>
             <td>{row.cluster}</td>
             <td>{row.nodes}</td>

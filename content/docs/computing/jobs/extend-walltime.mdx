@@ -11,11 +11,12 @@ Time can be set as:
 - `hh:mm:ss` - interpreted as hours:minutes:seconds
 
 Example:
-
-    (BUSTER)user123@skirit:~$ qextend 8152779.pbs-m1.metacentrum.cz 01:00:00
-    The walltime of the job 8152779.pbs-m1.metacentrum.cz has been extended.
-    Additional walltime:	01:00:00
-    New walltime:		02:00:00
+```bash
+(BUSTER)user123@skirit:~$ qextend 8152779.pbs-m1.metacentrum.cz 01:00:00
+The walltime of the job 8152779.pbs-m1.metacentrum.cz has been extended.
+Additional walltime:	01:00:00
+New walltime:		02:00:00
+```
 
 To prevent abuse of the tool, there is a quota limiting the `qextend` usage to:
 
@@ -30,19 +31,21 @@ Job prolongations older than 30 days are "forgotten" and no longer occupy user's
 
 To get the current state of your fund, run `qextend info`:
 
-    (BUSTER)user123@skirit:~$ qextend info
+```bash
+(BUSTER)user123@skirit:~$ qextend info
 
-    user123@META's info:
+user123@META's info:
 
-    30-days counter limit:	20
-    Used counter limit:	2
-    Avail. counter limit:	18
+30-days counter limit:	20
+Used counter limit:	2
+Avail. counter limit:	18
 
-    30-days cputime fund:	1440:00:00
-    Used cputime fund:	01:00:01
-    Avail. cputime fund:	1438:59:59
+30-days cputime fund:	1440:00:00
+Used cputime fund:	01:00:01
+Avail. cputime fund:	1438:59:59
 
-    Earliest rec. timeout:	2021-08-20 10:13:36.426429
+Earliest rec. timeout:	2021-08-20 10:13:36.426429
+```
 
 The counter limit is how many times you can prolong a job.
 Cputime fund is the amount of cpu-time you can use to prolong a job.
