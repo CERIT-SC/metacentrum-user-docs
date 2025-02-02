@@ -8,7 +8,7 @@ const GPUClusterTable = () => {
       nodes: 'adan[1-61].grid.cesnet.cz',
       gpusPerNode: '2x Tesla T4',
       computeCapability: '7.5',
-      memMiB: '15 109',
+      memGB: '16',
       cudnn: 'YES',
     },
     {
@@ -16,7 +16,7 @@ const GPUClusterTable = () => {
       nodes: 'bee[1-10].cerit-sc.cz',
       gpusPerNode: '2x H100 NVL',
       computeCapability: '9.0',
-      memMiB: '95 830',
+      memGB: '96',
       cudnn: 'YES',
     },
     {
@@ -24,7 +24,7 @@ const GPUClusterTable = () => {
       nodes: 'cha.natur.cuni.cz',
       gpusPerNode: '8x GeForce RTX 2080 Ti',
       computeCapability: '7.5',
-      memMiB: '11 019',
+      memGB: '12',
       cudnn: 'YES',
     },
     {
@@ -32,7 +32,7 @@ const GPUClusterTable = () => {
       nodes: 'fau[1-3].natur.cuni.cz',
       gpusPerNode: '8x Quadro RTX 5000',
       computeCapability: '7.5',
-      memMiB: '16 125',
+      memGB: '16',
       cudnn: 'YES',
     },
     {
@@ -40,7 +40,7 @@ const GPUClusterTable = () => {
       nodes: 'fer[1-3].natur.cuni.cz',
       gpusPerNode: '8x RTX A4000',
       computeCapability: '8.6',
-      memMiB: '16 117',
+      memGB: '16',
       cudnn: 'YES',
     },
     {
@@ -48,7 +48,7 @@ const GPUClusterTable = () => {
       nodes: 'galdor[1-20].metacentrum.cz',
       gpusPerNode: '4x A40',
       computeCapability: '8.6',
-      memMiB: '45 634',
+      memGB: '46',
       cudnn: 'YES',
     },
     {
@@ -56,7 +56,7 @@ const GPUClusterTable = () => {
       nodes: 'gita[1-7].cerit-sc.cz',
       gpusPerNode: '2x GeForce RTX 2080 Ti',
       computeCapability: '7.5',
-      memMiB: '11 019',
+      memGB: '12',
       cudnn: 'YES',
     },
     {
@@ -64,7 +64,7 @@ const GPUClusterTable = () => {
       nodes: 'glados1.cerit-sc.cz',
       gpusPerNode: '1x TITAN V GPU',
       computeCapability: '7.0',
-      memMiB: '12 066',
+      memGB: '12',
       cudnn: 'YES',
     },
     {
@@ -72,7 +72,7 @@ const GPUClusterTable = () => {
       nodes: 'glados[2-7].cerit-sc.cz',
       gpusPerNode: '2x GeForce RTX 2080',
       computeCapability: '7.5',
-      memMiB: '7 982',
+      memGB: '8',
       cudnn: 'YES',
     },
     {
@@ -80,7 +80,7 @@ const GPUClusterTable = () => {
       nodes: 'glados[10-13].cerit-sc.cz',
       gpusPerNode: '2x 1080Ti GPU',
       computeCapability: '6.1',
-      memMiB: '11 178',
+      memGB: '12',
       cudnn: 'YES',
     },
     {
@@ -88,7 +88,7 @@ const GPUClusterTable = () => {
       nodes: 'grimbold.metacentrum.cz',
       gpusPerNode: '2x Tesla P100',
       computeCapability: '6.0',
-      memMiB: '12 198',
+      memGB: '12',
       cudnn: 'YES',
     },
     {
@@ -96,7 +96,7 @@ const GPUClusterTable = () => {
       nodes: 'konos[1-8].fav.zcu.cz',
       gpusPerNode: '4x GeForce GTX 1080 Ti',
       computeCapability: '6.1',
-      memMiB: '11 178',
+      memGB: '12',
       cudnn: 'YES',
     },
     {
@@ -104,7 +104,7 @@ const GPUClusterTable = () => {
       nodes: 'luna[201-206].fzu.cz',
       gpusPerNode: '1x A40',
       computeCapability: '8.6',
-      memMiB: '45 634',
+      memGB: '46',
       cudnn: 'YES',
     },
     {
@@ -112,7 +112,7 @@ const GPUClusterTable = () => {
       nodes: 'zia[1-5].cerit-sc.cz',
       gpusPerNode: '4x A100',
       computeCapability: '8.0',
-      memMiB: '40 536',
+      memGB: '40',
       cudnn: 'YES',
     },
   ];
@@ -125,7 +125,7 @@ const GPUClusterTable = () => {
           <th>Nodes</th>
           <th>GPUs per node</th>
           <th>Compute capability</th>
-          <th>Mem [MiB]</th>
+          <th>Mem [GB]</th>
           <th>CuDNN</th>
         </tr>
       </thead>
@@ -136,7 +136,7 @@ const GPUClusterTable = () => {
             <td>{row.nodes}</td>
             <td>{row.gpusPerNode}</td>
             <td>{row.computeCapability}</td>
-            <td>{row.memMiB}</td>
+            <td>{row.memGB}</td>
             <td>{row.cudnn}</td>
           </tr>
         ))}
