@@ -1,6 +1,8 @@
 ---
 title: Containers
 ---
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
 ![pic](/img/meta/software/singularity-logo.png)
 
 <Callout type="info" title="What are containers">
@@ -31,7 +33,7 @@ Key features:
 
 ### Example
 
-```
+``bash`
 # I want to run Deb 11 OS from a container
 
 # Currently, the MetaCentrum OS is Deb 12
@@ -76,13 +78,14 @@ Singularity employs a few *paths* to store various temporary files:
 ### List options
 
 To list all commands, run
-
-    singularity
+```bash
+singularity
+```
 
 or
-
-    singularity --help
-
+```bash
+singularity --help
+```
 on the command line.
 
 ### Run a command in the container
@@ -90,21 +93,25 @@ on the command line.
 Passing a command to a Singularity image is done by `singularity exec "command"`.
 
 For example,
+```bash
+(BULLSEYE)user123@skirit:~$ singularity exec my_image.sif bash -c "java -version"
+java version "1.8.0_60"
+```
 
-    (BULLSEYE)user123@skirit:~$ singularity exec my_image.sif bash -c "java -version"
-    java version "1.8.0_60"
 
 ### Open shell in container
 
 You can also open a shell within a container to work interactively. This is done by `singularity shell` command.
 
 For example,
+```bash
+(BULLSEYE)user123@skirit:~$ singularity shell my_image.sif
+Singularity> command_1
+Singularity> command_2
+...
+Singularity> command_N
+```
 
-    (BULLSEYE)user123@skirit:~$ singularity shell my_image.sif
-    Singularity> command_1
-    Singularity> command_2
-    ...
-    Singularity> command_N
 
 <Callout type="info" title="Do not use frontends for extensive containers' usage">
     Apart from light testing and learning, running containers right on frontends is equivalent to **computing on frontend**. This is strongly discouraged. **For an extensive work with containers, use interactive or batch job.**
@@ -113,20 +120,22 @@ For example,
 ### Use container in an interactive job
 
 First run interactive job *with scratch directory*:
-
-    qsub -l select=1:scratch_local=10gb -l walltime=24:00:00
+```bash
+qsub -l select=1:scratch_local=10gb -l walltime=24:00:00
+```
 
 <Callout type="info" title="What is the scratch directory good for?">
     You may need to redirect some Singularity environment variables to store temporary files. To point them to `SCRATCHDIR` is one option. Alternatively you may redirect the Singularity variables to some folder in your home.
 </Callout>
 
 Run the container and open a shell within the container for interactive work:
-
-    user123@node123:~$ singularity shell my_image.sif
-    Singularity> command_1
-    Singularity> command_2
-    ...
-    Singularity> command_N
+```bash
+user123@node123:~$ singularity shell my_image.sif
+Singularity> command_1
+Singularity> command_2
+...
+Singularity> command_N
+```
 
 ### Use container in bash job
 
@@ -139,21 +148,21 @@ Assume the batch script resides in `/storage/city_N/home/user123/script.sh`.
 </Callout>
 
 **Variant A: put Singularity-specific option on command line**
-
-    qsub -l select=1:scratch_local=10GB -l walltime=24:00:00 -- \
-    export LOCALCACHEDIR=$SCRATCHDIR \
-    singularity exec -B /storage/city_N/home/user123/script.sh:/home/user123/script.sh \
-    my_image.sif bash -c "/home/user123/script.sh"
+```bash
+qsub -l select=1:scratch_local=10GB -l walltime=24:00:00 -- \
+export LOCALCACHEDIR=$SCRATCHDIR \
+singularity exec -B /storage/city_N/home/user123/script.sh:/home/user123/script.sh \
+my_image.sif bash -c "/home/user123/script.sh"
+```
 
 *Are you familiar with how the `-B` (or `--bind`) option in Singularity works?*
 
-=== "Yes."
-
-    The `-B` option binds the location of your script in the grid directory onto `/home/user123/` container directory.
-
-=== "No."
-
-    The `-B` option binds the location of your script in the grid directory onto `/home/user123/` container directory.
+<Tabs items={["Yes.", "No."]}>
+<Tab value="Yes.">
+The `-B` option binds the location of your script in the grid directory onto `/home/user123/` container directory.
+</Tab>
+<Tab value="No.">
+The `-B` option binds the location of your script in the grid directory onto `/home/user123/` container directory.
 
     The container sees itself as a small enclosed operating system with libraries and traditional Linux directories like `/home`, `/tmp` or `/mnt`. However this causes problem if the "real" filesystem is more complex and contains custom folders, like `/storage/city_N/home/user123`. In this case you have to specifically tell Singularity to bind these un-traditional directories.
 
@@ -161,6 +170,8 @@ Assume the batch script resides in `/storage/city_N/home/user123/script.sh`.
 
     Even better, `-B /home/user123:/storage/city_N/home/user123` does this:
     ![pic](/img/meta/software/singularity-bind-scheme.jpg)
+</Tab>
+</Tabs>
 
 Without the `-B` option, the container will automatically bind to itself host directories on the computational node where the job is run and the script may not be found.
 
@@ -169,9 +180,9 @@ Without the `-B` option, the container will automatically bind to itself host di
 Assume the batch script resides in `/storage/city_N/home/user123/script.sh` AND that you want to have the CLI command as simple as possible.
 
 In this case, run the batch job as 
-
-    qsub /storage/city_N/home/user123/script.sh
-
+```bash
+qsub /storage/city_N/home/user123/script.sh
+```
 
 The script `/storage/city_N/home/user123/script.sh` will then look somehow like the following:
 
@@ -210,6 +221,7 @@ MetaCentrum offers a couple of ready-to-use Singularity images (`.sif` files) to
 
 These images are placed `/cvmfs/singularity.metacentrum.cz/`.
 
+```
     /cvmfs/singularity.metacentrum.cz/
     │
     ├── BioBakery    
@@ -272,6 +284,8 @@ These images are placed `/cvmfs/singularity.metacentrum.cz/`.
     |    # that includes RepeatMasker, RepeatModeler, and coseg
     │
     ├── Trinity
+```
+
 
 ## Docker usage
 
@@ -297,30 +311,35 @@ If you have an existing Docker image, you can run it without root privileges in 
 If you want to change something or make your own image from scratch, you'll need root privileges; go to [Kubernetes](http://docs.cerit.io/).
 
 **Prepare Singularity image from Docker image** as:
-
-    singularity build image.img docker://tensorflow/tensorflow:latest
-
+```bash
+singularity build image.img docker://tensorflow/tensorflow:latest
+```
 **Start docker image** as:
-
-    qsub -l select=1 -l walltime=24:00:00 -- /usr/bin/singularity exec docker://ubuntu:latest echo "Hello Dinosaur!"
-
+```bash
+qsub -l select=1 -l walltime=24:00:00 -- /usr/bin/singularity exec docker://ubuntu:latest echo "Hello Dinosaur!"
+```
 **Docker download instructions** of the type
-
-    docker pull sangerpathogens/circlator
+```bash
+docker pull sangerpathogens/circlator
+````
 
 are in Singularity replaced as
-
-    singularity pull docker://sangerpathogens/circlator
+```bash
+singularity pull docker://sangerpathogens/circlator
+```
 
 This command will create `circlator_latest.sif`, a singularity image of docker image. 
 
 **Docker mounting command** of the type
-
-    docker run -v /home/ubuntu/data:/data sangerpathogens/circlator
+```bash
+docker run -v /home/ubuntu/data:/data sangerpathogens/circlator
+```
 
 are in Singularity replaced by
+```bash
+mkdir circ_read; singularity run -B ./circ_read/:/data ./circlator_latest.sif
+```
 
-    mkdir circ_read; singularity run -B ./circ_read/:/data ./circlator_latest.sif
 
 where `circ_read` is the folder used for getting data into an image. By running the command you are in the image and using `df -h` you can check that the folder is mounted.
 
@@ -337,15 +356,17 @@ Alternatively, you can setup and interactive job and work from within the job.
 First set path for temporary files:
 (Default is `/tmp` which has quota of only 1 GB.)
 
+```bash
+export SINGULARITY_TMPDIR=/storage/CITY_XY/home/user123/
+```
 
-    export SINGULARITY_TMPDIR=/storage/CITY_XY/home/user123/
 
 If you work within interactive job with scratch directory, then `export SINGULARITY_TMPDIR=$SCRATCHDIR` is done automatically.
 
 Next, download Docker image and build
-
-    singularity pull docker://uwligroup/chronusq
-
+```bash
+singularity pull docker://uwligroup/chronusq
+```
 After ca 5 minus the singularity image `chronusq_latest.sif` will be ready.
 
 To test the image, download water molecule `water.inp` from [here](https://urania.chem.washington.edu/chronusq/chronusq_public/-/wikis/examples/HF-Energy) or copy from here:
@@ -373,8 +394,9 @@ mem = 100 MB
 ```
 
 and run the calculation of single-point ground state energy as
-
+```bash
     singularity exec chronusq_latest.sif chronusq water.inp
+```
 
 {/*
 Relevantni tickety z RT:
@@ -397,35 +419,41 @@ To build custom image, root privileges are needed, but this can be replaced by U
 </Callout>
 
 Image file is read-only and to modify it you have to use sandbox directory. In this example we use Debian Buster docker image.
-
-    singularity build -f -s test1.sbox docker://debian:buster
+```bash
+singularity build -f -s test1.sbox docker://debian:buster
+```
 
 After running container from sandbox, you can make changes via package system, compile the source codes, install pip/conda modules etc. In this example we install ffmpeg package in Debian Buster environment.
 
 It is necessary to **work in the scratch directory**, using fakeroot mode (`-f` options) is not possible on storages (`/storage/cityXY/...`).
-
-    singularity build -f -s test1.sbox docker://debian:buster
+```bash
+singularity build -f -s test1.sbox docker://debian:buster
+```
 
 After running container from sandbox, you can make changes via package system, compile the source codes, install pip/conda modules etc. In this example we install ffmpeg package in Debian Buster environment.
-
-    singularity shell -f -w test1.sbox
-    Singularity> apt update && apt install ffmpeg
-    Singularity> exit
+```bash
+singularity shell -f -w test1.sbox
+Singularity> apt update && apt install ffmpeg
+Singularity> exit
+```
 
 Build image from sandbox:
-
-    singularity build -f test1.SIF test1.sbox
+```bash
+singularity build -f test1.SIF test1.sbox
+```
 
 For the repeatable build of image you can use the definition file, example test1.def
-
-    Bootstrap: docker
-    From: debian:buster
-    %post
-    apt-get update && apt-get install -y ffmpeg
+```bash
+Bootstrap: docker
+From: debian:buster
+%post
+apt-get update && apt-get install -y ffmpeg
+```
 
 Build image from recipe file:
-
-    singularity build –f test1.SIF test1.def
+```bash
+singularity build –f test1.SIF test1.def
+```
 
 For more details, see [https://sylabs.io/guides/3.7/user-guide/definition\_files.html](https://sylabs.io/guides/3.7/user-guide/definition_files.html).
 
@@ -433,7 +461,7 @@ For more details, see [https://sylabs.io/guides/3.7/user-guide/definition\_files
 
 The scenario for this setup is: two nodes with common scratch dir
 
-```
+```bash
 #!/bin/bash
 #PBS -l select=2:ncpus=2:mem=1gb:scratch_shared=4gb
 #PBS -l walltime=04:00:00

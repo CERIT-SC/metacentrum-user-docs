@@ -12,15 +12,15 @@ To run GPU calculation, the user needs to specify **number of GPU cards** only. 
 ### ngpus
 
 Parameter `ngpus` specifies how many GPU cards the job will use.
-
-    qsub -l select=1:ncpus=1:ngpus=2 ... 
-
+```bash
+qsub -l select=1:ncpus=1:ngpus=2 ... 
+```
 ### gpu mem
 
 PBS parameter `gpu_mem` specifies minimum amount of memory that the GPU card will have. 
-
-    qsub -l select=1:ncpus=1:ngpus=1:gpu_mem=10gb -l walltime=1:00:00
-
+```bash
+qsub -l select=1:ncpus=1:ngpus=1:gpu_mem=10gb -l walltime=1:00:00
+```
 ### gpu\_cap
 
 PBS parameter `gpu_cap` is [Cuda compute capability as defined on this page](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities).
@@ -30,26 +30,26 @@ PBS parameter `gpu_cap` is [Cuda compute capability as defined on this page](htt
 The user can specify a *minimal required architecture* (`compute_XY`), or a *minimal required version within a given architecture* (`sm_XY`).
 
 Minimal architecture:
-
-    gpu_cap=compute_70   # will give you 7.0, 7.1, ... 7.5, but also 8.0, 9.0 ...
-
+```bash
+gpu_cap=compute_70   # will give you 7.0, 7.1, ... 7.5, but also 8.0, 9.0 ...
+```
 Minimal version of a chosen architecture, e.g. 7 ("Volta"):
-
-    gpu_cap=sm_72        # will give you 7.2 till 7.5, but not 8.0 and higher
-
+```bash
+gpu_cap=sm_72        # will give you 7.2 till 7.5, but not 8.0 and higher
+```
 The requirements can be combined in a comma-separated string.
 
-<Callout type="info">
+<Callout type="info" title="Note">
     The commas are evaluated as an OR operand.
 </Callout>
 
 Example:
-
-    qsub -l select=1:ngpus=1:gpu_cap=\"sm_65,compute_70\":mem=4gb -l walltime=1:00:00  # 6.5 or 7.0 and higher
-    qsub -l 'select=1:ngpus=1:gpu_cap="sm_65,compute_70":mem=4gb' -l walltime=1:00:00  # dtto
-
-<Callout type="info">
-    Note that the quotes enclosing the `gpu_cap` options must be protected against shell expansion either by escaping them or by enclosing the whole `qsub` command into single quotes.
+```bash
+qsub -l select=1:ngpus=1:gpu_cap=\"sm_65,compute_70\":mem=4gb -l walltime=1:00:00  # 6.5 or 7.0 and higher
+qsub -l 'select=1:ngpus=1:gpu_cap="sm_65,compute_70":mem=4gb' -l walltime=1:00:00  # dtto
+```
+<Callout type="info" title="Note">
+ Note that the quotes enclosing the `gpu_cap` options must be protected against shell expansion either by escaping them or by enclosing the whole `qsub` command into single quotes.
 </Callout>
 
 ### cuda\_version

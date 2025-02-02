@@ -10,34 +10,34 @@ title: How to install software
 **Variant 1: install from within interactive job (&gt;= 5 min lasting installation)**
 
 ```bash
-    # first start an interactive job with scratch directory
-    qsub -I -l select=1:ncpus=1:mem=4gb:scratch_local=10gb -l walltime=2:00:00
+# first start an interactive job with scratch directory
+qsub -I -l select=1:ncpus=1:mem=4gb:scratch_local=10gb -l walltime=2:00:00
 
-    # after the job starts, redirect temporary files into scratch
-    mkdir $SCRATCHDIR/tmp
-    export TMPDIR=$SCRATCHDIR/tmp
+# after the job starts, redirect temporary files into scratch
+mkdir $SCRATCHDIR/tmp
+export TMPDIR=$SCRATCHDIR/tmp
 
-    # make an installation directory anywhere in your home
-    mkdir /storage/CITY_XY/home/user123/my_fancy_sw 
+# make an installation directory anywhere in your home
+mkdir /storage/CITY_XY/home/user123/my_fancy_sw 
 
-    # then install into this directory
-    cd /storage/CITY_XY/home/user123/my_fancy_sw 
-    install ...
+# then install into this directory
+cd /storage/CITY_XY/home/user123/my_fancy_sw 
+install ...
 ```
 
 **Variant 2: install without interactive job (&lt;= 5 min lasting installations ONLY)**
 
 ```bash
-    # first redirect temporary files into any directory in your home
-    mkdir /storage/city_XY/home/user123/tmp
-    export /storage/city_XY/home/user123/tmp
+# first redirect temporary files into any directory in your home
+mkdir /storage/city_XY/home/user123/tmp
+export /storage/city_XY/home/user123/tmp
 
-    # make an installation directory anywhere in your home
-    mkdir /storage/CITY_XY/home/user123/my_fancy_sw 
+# make an installation directory anywhere in your home
+mkdir /storage/CITY_XY/home/user123/my_fancy_sw 
 
-    # then install into this directory
-    cd /storage/CITY_XY/home/user123/my_fancy_sw 
-    install ...
+# then install into this directory
+cd /storage/CITY_XY/home/user123/my_fancy_sw 
+install ...
 ```
 
 <Callout type="info" title="why do I have to redirect to TMPDIR?">
@@ -102,26 +102,26 @@ When you download a software, it's usually compressed in some way and need to be
 **.tar**
 
 ```bash
-    tar -x -f package.tar 		# extract .tar archive 
+tar -x -f package.tar 		# extract .tar archive 
 ```
 
 **gz**
 
 ```bash
-    gunzip package.gz 			# unzip .gz file
+ gunzip package.gz 			# unzip .gz file
 ```
 
 **.tgz, .tar.gz**
 
 ```bash
-    tar -xvf package.tgz 		# unzip tarred and gzipped file
-    tar -xvf package.tar.gz 	# dtto
+tar -xvf package.tgz 		# unzip tarred and gzipped file
+tar -xvf package.tar.gz 	# dtto
 ```
 
 **.zip**
 
 ```bash
-    unzip package.zip 			# unzip .zip file
+unzip package.zip 			# unzip .zip file
 ```
 
 ### Binaries
@@ -129,19 +129,19 @@ When you download a software, it's usually compressed in some way and need to be
 Some software is available as a ready-made binary file. In this case the only thing you need to do is to download and unpack the files.
 
 ```bash
-    user123@skirit:~$ mkdir binaries ; cd binaries # prepare directory for the software (noc necessarry)
-    user123@skirit:~/binaries$ wget https://sw_xy.tgz ; tar -xvf sw_xy.tgz # download and unpack 
-    user13@skirit:~/binaries$ chmod 755 exec_file # set the binary to be executable
-    user13@skirit:~/binaries$ ./exec_file # run the executable file
+user123@skirit:~$ mkdir binaries ; cd binaries # prepare directory for the software (noc necessarry)
+user123@skirit:~/binaries$ wget https://sw_xy.tgz ; tar -xvf sw_xy.tgz # download and unpack 
+user13@skirit:~/binaries$ chmod 755 exec_file # set the binary to be executable
+user13@skirit:~/binaries$ ./exec_file # run the executable file
 ```
 
 *Example: Usage of software "satsuma" distributed as binary file.*
 
 ```bash
-    user123@skirit:~$ mkdir satsuma ; cd satsuma # prepare dir for software "satsuma"
-    user123@skirit:~/satsuma$ wget https://github.com/bioinfologics/satsuma2/releases/download/untagged-2c08e401140c1ed03e0f/satsuma2-linux.tar.gz # download it
-    user13@skirit:~/satsuma$ tar -xvf satsuma2-linux.tar.gz # unpack it
-    user13@skirit:~/satsuma$ cd product/bin ; ls # list and run the executables 
+user123@skirit:~$ mkdir satsuma ; cd satsuma # prepare dir for software "satsuma"
+user123@skirit:~/satsuma$ wget https://github.com/bioinfologics/satsuma2/releases/download/untagged-2c08e401140c1ed03e0f/satsuma2-linux.tar.gz # download it
+user13@skirit:~/satsuma$ tar -xvf satsuma2-linux.tar.gz # unpack it
+user13@skirit:~/satsuma$ cd product/bin ; ls # list and run the executables 
 ```
 
 ### R packages
@@ -149,22 +149,22 @@ Some software is available as a ready-made binary file. In this case the only th
 To install R packages locally, first create some directory to serve as your local R library:
 
 ```bash
-    mkdir /storage/CITY_N/home/USERNAME/Rpackages/
+mkdir /storage/CITY_N/home/USERNAME/Rpackages/
 ```
 
 Then install the package as:
 
 ```bash
-    export R_LIBS_USER="/storage/CITY_N/home/USERNAME/Rpackages"
-    module add r/
-    R
-    >install.packages("PACKAGE_NAME",lib="/storage/CITY_N/home/USERNAME/Rpackages/")
+export R_LIBS_USER="/storage/CITY_N/home/USERNAME/Rpackages"
+module add r/
+R
+>install.packages("PACKAGE_NAME",lib="/storage/CITY_N/home/USERNAME/Rpackages/")
 ```
 
 and load the package
 
 ```bash
-    >library("PACKAGE_NAME")
+>library("PACKAGE_NAME")
 ```
 
 ### Debian packages
@@ -173,36 +173,36 @@ Users can install **debian packages (.deb)** locally (in the user's home directo
 
 Sometimes it is fastest solution to get one particular library required by a particular application.
 
-<Callout type="info">
+<Callout type="warn" title="Warning">
     Users cannot use `apt-get install`, `apt install` directly. They can, however, use `apt search`, `apt-get download` and then install the package locally by `dpkg` command. 
 </Callout>
 
 Obtain the package:
 
 ```bash
-    # some packages can be found by apt search directly
-    apt search libargtable2-0       
-    apt-get download libargtable2-0
+# some packages can be found by apt search directly
+apt search libargtable2-0       
+apt-get download libargtable2-0
   
-    # not all .deb packages may be available in repo
-    apt search libicu63      # returns nothing
+# not all .deb packages may be available in repo
+apt search libicu63      # returns nothing
 
-    # however the package is available in http://ftp.cz.debian.org/debian/pool/main/i/icu/
-    wget http://ftp.cz.debian.org/debian/pool/main/i/icu/libicu63_63.1-6+deb10u3_amd64.deb
+# however the package is available in http://ftp.cz.debian.org/debian/pool/main/i/icu/
+wget http://ftp.cz.debian.org/debian/pool/main/i/icu/libicu63_63.1-6+deb10u3_amd64.deb
 ```
 
 Install the .deb package:
 
 ```bash
-    mkdir extract_dir
-    dpkg -x libargtable2-0_12-1.1_amd64.deb extract_dir
+mkdir extract_dir
+dpkg -x libargtable2-0_12-1.1_amd64.deb extract_dir
 ```
     
 Add path to new bin/library to `PATH`/`LD_LIBRARY_PATH`: 
 
 ```bash
-    export LD_LIBRARY_PATH=storage/cityN/home/user123/extract_dir/lib/:$LD_LIBRARY_PATH
-    export PATH=/storage/cityN/home/user123/extract_dir/bin/:$PATH
+export LD_LIBRARY_PATH=storage/cityN/home/user123/extract_dir/lib/:$LD_LIBRARY_PATH
+export PATH=/storage/cityN/home/user123/extract_dir/bin/:$PATH
 ```
 
 ### Perl modules
@@ -311,31 +311,31 @@ python
 *Example: Install package [segemehl](https://anaconda.org/bioconda/segemehl).*
     
 ```bash
-    module add mambaforge
-    # create new environment called segemehl-0.3.4 (with python 3.8)
-    mamba create --prefix /storage/city/home/user_name/segemehl-0.3.4 python=3.8 -y
-    # activate the environment
-    mamba activate /storage/city/home/user_name/segemehl-0.3.4
-    # install the package
-    mamba install -c bioconda segemehl -y
-    # leave the environment
-    mamba deactivate
+module add mambaforge
+# create new environment called segemehl-0.3.4 (with python 3.8)
+mamba create --prefix /storage/city/home/user_name/segemehl-0.3.4 python=3.8 -y
+# activate the environment
+mamba activate /storage/city/home/user_name/segemehl-0.3.4
+# install the package
+mamba install -c bioconda segemehl -y
+# leave the environment
+mamba deactivate
 ```
 
 If you need to install multiple programs at the same time, use the following syntax:
 
 ```bash
-    # with this syntax, mamba will resolve all environment dependencies only once
-    mamba create --prefix /storage/city/home/user_name/my_new_env -c channel_1 -c channel_2 <other channels> software_1 software_2 <other softwares>
+# with this syntax, mamba will resolve all environment dependencies only once
+mamba create --prefix /storage/city/home/user_name/my_new_env -c channel_1 -c channel_2 <other channels> software_1 software_2 <other softwares>
 ```
 
 Activate this environment (e.g. within batch jobs) as:
 
 ```bash
-    module add mambaforge
-    mamba activate /storage/city/home/user_name/segemehl-0.3.4
-    segemehl.x ... # run the job
-    mamba deactivate
+module add mambaforge
+mamba activate /storage/city/home/user_name/segemehl-0.3.4
+segemehl.x ... # run the job
+mamba deactivate
 ```
 
 <Callout  type="info" title="Tip" icon="💡">

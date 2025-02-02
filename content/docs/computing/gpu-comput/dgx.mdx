@@ -67,12 +67,12 @@ The abstract should be written in a way that is easily understandable by the gen
 ## Usage
 
 Once your request is **approved**, the **DGX H100 cluster** is accessible **only via the `gpu_dgx` queue** on:
-
-    gpu_dgx@pbs-m1.metacentrum.cz
-
+```bash
+gpu_dgx@pbs-m1.metacentrum.cz
+```
 To submit a job to the **gpu_dgx** queue, use the following command:
 
-```sh
+```bash
 qsub -q gpu_dgx@pbs-m1.metacentrum.cz -l select=1:ngpus=4 -l walltime=10:00:00
 ```
 
@@ -80,7 +80,7 @@ qsub -q gpu_dgx@pbs-m1.metacentrum.cz -l select=1:ngpus=4 -l walltime=10:00:00
 
 If you require **8 GPUs for 10 hours**, request the entire node by adding the following parameters to your `qsub` command:
 
-```sh
+```bash
 qsub -q gpu_dgx -l select=1:ngpus=8:ncpus=112:mem=2000g:scratch.ssd=1tb -l place=exclhost -l walltime=10:00:00
 ```
 

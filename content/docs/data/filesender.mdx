@@ -38,15 +38,20 @@ The configuration file is a normal text file. Nothing needs to be modified or ad
 
 To make filesender run, add it as a module:
 
-    module add filesender/0-cli
+```bash
+module add filesender/0-cli
+```
 
 and export a path to the configuration file:
-
-    export FILESENDER_CONFIG=/storage/.../path-to-configuration-file # default configuration is in $HOME/.filesender/filesender.py.ini
+```bash
+export FILESENDER_CONFIG=/storage/.../path-to-configuration-file # default configuration is in $HOME/.filesender/filesender.py.ini
+```
 
 Then you can upload the file:
+```bash
+filesender.py -s "Subject" -r recipient_1@example.org    file.tar.gz     # upload file.tar.gz
+```
 
-    filesender.py -s "Subject" -r recipient_1@example.org    file.tar.gz     # upload file.tar.gz
 
 ### Download files
 
@@ -58,7 +63,9 @@ A new window in your browser will be open where you have to copy a URL hidden un
 
 Go to the terminal and use wget utility to download the file. The syntax looks like:
 
-    wget -O "file_name" "URL"
+```bash
+wget -O "file_name" "URL"
+```
 
 Replace file\_name with name as you wish and URL by saved URL in your clipboard. Do not forget to use double quotes.
 

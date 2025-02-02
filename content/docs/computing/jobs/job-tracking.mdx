@@ -6,11 +6,11 @@ title: Job tracking
 The current state of the job can be probed by `qstat` command.
 
 Example:
-
-    qstat job_ID # display status of selected job (short format)
-    qstat -f job_ID # display status of job (long format)
-    qstat -u user123 # list all user123's running or waiting jobs on PBS server 
-
+```bash
+qstat job_ID # display status of selected job (short format)
+qstat -f job_ID # display status of job (long format)
+qstat -u user123 # list all user123's running or waiting jobs on PBS server 
+```
 ## Job states
 
 PBS Pro uses different codes to mark job state within the PBS ecosystem. 
